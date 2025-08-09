@@ -51,12 +51,13 @@ body {
   --background: #ffffff;
   --primary-black: #020a15;
   --primary-black-light: #4b5563;
+  -primary-gray: #f7f7f7;
   --primary-yellow: #fef9c3;
   --primary-red: #ef4444;
   --primary-green: #16a34a;
   --primary-green-light: #dcfce7;
   --secondary-blue: #1e40af;
-  
+  --gradient-main: linear-gradient(to right, #2563eb, #731ac4);
 }
 
 @layer base {

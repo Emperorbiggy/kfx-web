@@ -21,7 +21,14 @@ module.exports = {
           greenLight: "var(--primary-green-light)",
           blue: "var(--secondary-blue)",
         }
-      }
+      },
+      backgroundColor: {
+        'gradient-main': "var(--gradient-main)",
+      },
+      backgroundImage: {
+        'gradient-main': "var(--gradient-main)"
+      },
+
     },
   },
   plugins: [],
