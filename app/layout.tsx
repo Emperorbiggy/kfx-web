@@ -50,7 +50,7 @@ export default function AppLayout({
         <Providers>
           <Suspense fallback={<LoaderOverlay />}>{children}</Suspense>
         </Providers>
-        <MuiXLicense />
+        {/* <MuiXLicense /> */}
       </body>
     </html>
   );

@@ -40,7 +40,7 @@ apiInterceptors.interceptors.response.use(
         // Handle unauthorized access
         console.warn("Unauthorized access. Redirecting to login...");
         localStorage.removeItem("authToken");
-        window.location.href = "/auth/login";
+        window.location.href = "/login";
       }
     } else if (error.request) {
       // No response was received
