@@ -20,13 +20,13 @@ module.exports = {
           green: "var(--primary-green)",
           greenLight: "var(--primary-green-light)",
           blue: "var(--secondary-blue)",
-        }
-      },
-      backgroundColor: {
-        'gradient-main': "var(--gradient-main)",
+          grey: "var(--primary-grey)",
+        },
+
       },
       backgroundImage: {
-        'gradient-main': "var(--gradient-main)"
+        'gradient-main': "var(--gradient-main)",
+        'gradient-auth': "var(--gradient-auth)"
       },
 
     },

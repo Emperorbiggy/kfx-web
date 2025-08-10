@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 import "tailwindcss/tailwind.css";
 import { Toaster } from "react-hot-toast";
 import React, { Suspense } from "react";
-import MuiXLicense from "./muiXLicense";
+// import MuiXLicense from "./muiXLicense";
 import { Providers } from "./providers";
 import LoaderOverlay from "@/components/ui/loader-overlay";
 
