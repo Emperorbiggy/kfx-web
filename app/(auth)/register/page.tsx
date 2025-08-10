@@ -16,6 +16,7 @@ import z from "zod";
 import { CiMail } from "react-icons/ci";
 import { CiLock } from "react-icons/ci";
 import { Button } from "@/components/ui/button";
+import SocialLoginButtons from "@/components/authentication/socialButton";
 interface SignUpFormData {
   email: string;
   password: string;
@@ -170,23 +171,3 @@ export default function SignUpPage() {
   );
 }
 
-const SocialLoginButtons = ({
-  icon,
-  text,
-  link,
-}: {
-  icon: ReactNode;
-  text: string;
-  link: string;
-}) => {
-  const router = useRouter();
-  return (
-    <div
-      className="flex items-center justify-center gap-2 border-2 border-primary-grey p-2 rounded-xl"
-      onClick={() => router.push(link)}
-    >
-      <span>{icon}</span>
-      <span>{text}</span>
-    </div>
-  );
-};
