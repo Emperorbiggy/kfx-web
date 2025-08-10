@@ -182,7 +182,7 @@ const SocialLoginButtons = ({
   const router = useRouter();
   return (
     <div
-      className="flex items-center justify-center gap-4 border-2 border-primary-grey p-2 rounded-xl"
+      className="flex items-center justify-center gap-2 border-2 border-primary-grey p-2 rounded-xl"
       onClick={() => router.push(link)}
     >
       <span>{icon}</span>
