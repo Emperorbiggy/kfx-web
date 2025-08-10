@@ -64,8 +64,8 @@ body {
   --gradient-main: linear-gradient(to right, #2563eb, #731ac4);
   --gradient-auth: linear-gradient(
     to bottom,
-    #160108 0%,
-    #160108 50%,
+    #0f0106 0%,
+    #0f0106 50%,
     #721ac436 100%
   );
 }
