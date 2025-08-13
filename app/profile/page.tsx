@@ -8,7 +8,9 @@ import {
   FaLock, 
   FaLink, 
   FaQuestionCircle, 
-  FaSignOutAlt 
+  FaSignOutAlt,
+  FaUserCheck,
+  FaShieldAlt
 } from "react-icons/fa";
 
 export default function ProfilePage() {
@@ -59,7 +61,7 @@ export default function ProfilePage() {
           
           <ul className="space-y-3">
             <li className="flex items-center">
-              <span className="mr-3 font-medium text-gray-500">A</span>
+              <FaUserCheck className="w-4 h-4 mr-3 text-gray-500" />
               <span>Complete Profile Setup</span>
             </li>
             
@@ -69,7 +71,7 @@ export default function ProfilePage() {
           
           <ul className="space-y-3">
             <li className="flex items-center">
-              <span className="mr-3 font-medium text-gray-500">B</span>
+              <FaShieldAlt className="w-4 h-4 mr-3 text-gray-500" />
               <span>Enable Two-Factor Auth</span>
             </li>
             
