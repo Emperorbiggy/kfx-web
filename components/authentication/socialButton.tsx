@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
+"use client"
 import { ReactNode } from "react";
-
+import Link from "next/link";
 const SocialLoginButtons = ({
   icon,
   text,
@@ -10,15 +10,14 @@ const SocialLoginButtons = ({
   text: string;
   link: string;
 }) => {
-  const router = useRouter();
   return (
-    <div
-      className="flex items-center justify-center gap-2 border-2 border-primary-grey p-2 rounded-xl"
-      onClick={() => router.push(link)}
+    <Link
+      href={link}
+      className="cursor-pointer flex items-center justify-center gap-2 border-2 border-primary-grey p-2 rounded-xl"
     >
       <span>{icon}</span>
       <span>{text}</span>
-    </div>
+    </Link>
   );
 };
 

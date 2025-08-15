@@ -4,14 +4,18 @@
 
 @import "tw-animate-css";
 
+/* Dark mode variant */
 @custom-variant dark (&:is(.dark *));
 
+/* Theme variables */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
+
+/* Fonts */
 @font-face {
   font-family: "Poppins";
   src: url("/fonts/Poppins-Regular.ttf") format("truetype");
@@ -39,28 +43,87 @@
   font-weight: 700; /* Bold */
   font-style: normal;
 }
+
+/* Reset */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
+
 body {
   font-family: "Poppins", sans-serif;
   color: var(--primary-black);
   background-color: var(--background);
 }
+
+/* Root Variables */
 :root {
   --primary: #008ed3;
   --primary-blue-light: #c1dae7;
   --background: #ffffff;
   --primary-black: #020a15;
   --primary-black-light: #4b5563;
-  --primary-grey: #B8C7D2;
+  --primary-grey: #b8c7d2;
+  --primary-grey-100: #e9edf1;
   --primary-yellow: #fef9c3;
   --primary-red: #ef4444;
   --primary-green: #16a34a;
   --primary-green-light: #dcfce7;
-  --secondary-blue: #1e40af;
+
+  /* Secondary Blue Shades */
+  --secondary-blue-50: #e9f1ff;
+  --secondary-blue-100: #d7e7ff;
+  --secondary-blue-200: #aacdff;
+  --secondary-blue-300: #80b5ff;
+  --secondary-blue-400: #4c9aff;
+  --secondary-blue-500: #0082fe;
+  --secondary-blue-600: #0067fe;
+  --secondary-blue-700: #0052f4;
+  --secondary-blue-800: #0045cb;
+  --secondary-blue-900: #002366;
+  --secondary-blue-950: #001233;
+
+  /* Secondary Green Shades */
+  --secondary-green-50: #e7fef9;
+  --secondary-green-100: #cafcf0;
+  --secondary-green-200: #7cf9dd;
+  --secondary-green-300: #00f6cc;
+  --secondary-green-400: #00f2bc;
+  --secondary-green-500: #00bc86;
+  --secondary-green-600: #00bc86; /* Same as 500 */
+  --secondary-green-700: #008f66;
+  --secondary-green-800: #006044;
+  --secondary-green-900: #003022;
+  --secondary-green-950: #001811;
+
+  /* Secondary Red Shades */
+  --secondary-red-50: #ffebeb;
+  --secondary-red-100: #ffd3d3;
+  --secondary-red-200: #ffa2a2;
+  --secondary-red-300: #ff696a;
+  --secondary-red-400: #ff2f30;
+  --secondary-red-500: #ff0000;
+  --secondary-red-600: #d10000;
+  --secondary-red-700: #9d0000;
+  --secondary-red-800: #690000;
+  --secondary-red-900: #350101;
+  --secondary-red-950: #1b0101;
+
+  /* Secondary Grey Shades */
+  --secondary-grey-50: #e9edf1;
+  --secondary-grey-100: #d8e0e7;
+  --secondary-grey-200: #b8c7d2;
+  --secondary-grey-300: #9bb1c0;
+  --secondary-grey-400: #7b97ab;
+  --secondary-grey-500: #5b7e96;
+  --secondary-grey-600: #496477;
+  --secondary-grey-700: #354b59;
+  --secondary-grey-800: #25333d;
+  --secondary-grey-900: #12191f;
+  --secondary-grey-950: #090d0f;
+
+  /* Gradients */
   --gradient-main: linear-gradient(to right, #2563eb, #731ac4);
   --gradient-auth: linear-gradient(
     to bottom,
@@ -70,20 +133,19 @@ body {
   );
 }
 
+/* Buttons */
 .btn-primary {
   @apply text-white transition ease-in-out delay-150 bg-gradient-main hover:-translate-y-1 hover:scale-110 duration-300 px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed;
 }
 
-
 .btn-disabled {
-    @apply text-white bg-gradient-main hover:cursor-not-allowed opacity-50 cursor-not-allowed
+  @apply text-white bg-gradient-main hover:cursor-not-allowed opacity-50 cursor-not-allowed;
 }
 
 .btn-danger {
-    @apply text-white transition ease-in-out delay-150 bg-primary-red hover:-translate-y-1 hover:scale-110 duration-300 px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed
+  @apply text-white transition ease-in-out delay-150 bg-primary-red hover:-translate-y-1 hover:scale-110 duration-300 px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed;
 }
 
 .btn-success {
   @apply text-white transition ease-in-out delay-150 bg-primary-green hover:-translate-y-1 hover:scale-110 duration-300 px-4 py-2 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed;
 }
-

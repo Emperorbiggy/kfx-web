@@ -28,7 +28,6 @@ const profileHeaderCardVariants = cva(
 
 interface ProfileHeaderCardProps
   extends VariantProps<typeof profileHeaderCardVariants> {
-  title: string;
   asChild?: boolean;
   onBack?: () => void;
   className?: string;
@@ -36,7 +35,6 @@ interface ProfileHeaderCardProps
 }
 
 export function ProfileHeaderCard({
-  title,
   asChild = false,
   variant,
   size,
@@ -47,17 +45,16 @@ export function ProfileHeaderCard({
   const Comp = asChild ? Slot : "div";
 
   return (
-    <Comp
-      className={cn(profileHeaderCardVariants({ variant, size, className }))}
-    >
-      <div className="flex items-center justify-between">
-        <button
-          onClick={onBack}
-          className="flex items-center text-gray-600 hover:text-gray-900"
-        >
-          <FiChevronLeft className="mr-1" />
-          <span className="font-medium">{title}</span>
-        </button>
+    <Comp className={cn(profileHeaderCardVariants({ variant, size, className }))}>
+      <div className="flex items-center gap-2">
+        {onBack && (
+          <button
+            onClick={onBack}
+            className="flex items-center text-gray-600 hover:text-gray-900"
+          >
+            <FiChevronLeft className="mr-1" />
+          </button>
+        )}
         {children}
       </div>
     </Comp>

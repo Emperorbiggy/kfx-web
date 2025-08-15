@@ -3,14 +3,14 @@ import React from "react";
 
 const AppHeading = ({
   text,
-  type = HeadingType.MAIN,
+  type = HeadingType.H1,
   className = null,
 }: {
   text: string;
   type: HeadingType;
   className?: string | null;
 }) => {
-  return <h1 className={`${type} ${className}`}>{text}</h1>;
+  return <h1 className={`${type} ${className} `}>{text}</h1>;
 };
 
 export default AppHeading;

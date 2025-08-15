@@ -1,7 +1,9 @@
-export const PAGE_PADDING = "30px";
-export const CARD_GAP = "30px";
+export const PAGE_PADDING = "20px";
+export const CARD_GAP = "20px";
 export const CARD_TITLE = "text-lg font-bold  self-start mb-5";
 export const BORDER_RADIUS = "rounded-2xl";
+export const SIDEBAR_WIDTH_OPEN = "256px";
+export const SIDEBAR_WIDTH_COLLAPSED = "80px";
 // for components where one can't use Tailwind classes
 export const COLORS = {
     PRIMARY: "#008ed3",
