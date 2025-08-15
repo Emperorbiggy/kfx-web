@@ -8,7 +8,9 @@ import AiAssistantPage from "./_components/AiAssistantPage";
 import SupportTopicsPage from "./_components/SupportTopicsPage";
 
 export default function SupportPage() {
-  const [currentView, setCurrentView] = useState<'main' | 'liveChat' | 'aiAssistant' | 'supportTopics'>('main');
+  const [currentView, setCurrentView] = useState<
+    "main" | "liveChat" | "aiAssistant" | "supportTopics"
+  >("main");
   const [showSubmitModal, setShowSubmitModal] = useState(false);
 
   // Event handlers
@@ -17,19 +19,19 @@ export default function SupportPage() {
   };
 
   const handleLiveChat = () => {
-    setCurrentView('liveChat');
+    setCurrentView("liveChat");
   };
 
   const handleAiAssistant = () => {
-    setCurrentView('aiAssistant');
+    setCurrentView("aiAssistant");
   };
 
   const handleBrowseTopics = () => {
-    setCurrentView('supportTopics');
+    setCurrentView("supportTopics");
   };
 
   const handleBackToMain = () => {
-    setCurrentView('main');
+    setCurrentView("main");
   };
 
   const handleCloseModal = () => {
@@ -38,26 +40,14 @@ export default function SupportPage() {
 
   // Render based on current view
   switch (currentView) {
-    case 'liveChat':
-      return (
-        <LiveChatPage
-          onBack={handleBackToMain}
-        />
-      );
+    case "liveChat":
+      return <LiveChatPage onBack={handleBackToMain} />;
 
-    case 'aiAssistant':
-      return (
-        <AiAssistantPage
-          onBack={handleBackToMain}
-        />
-      );
+    case "aiAssistant":
+      return <AiAssistantPage onBack={handleBackToMain} />;
 
-    case 'supportTopics':
-      return (
-        <SupportTopicsPage
-          onBack={handleBackToMain}
-        />
-      );
+    case "supportTopics":
+      return <SupportTopicsPage onBack={handleBackToMain} />;
 
     default:
       return (

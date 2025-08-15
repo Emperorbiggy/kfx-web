@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import { ProfileHeaderCard } from "@/components/ui/ProfileHeaderCard";
+import { useRouter } from "next/navigation";
+import AppHeading from "@/components/texts/Headings";
+import { HeadingType } from "@/types/enum";
 import { FiSend, FiPaperclip, FiSmile } from "react-icons/fi";
 import { FaRobot } from "react-icons/fa";
 
@@ -28,7 +31,7 @@ export default function AiAssistantPage({ onBack }: AiAssistantPageProps) {
       setNewMessage("");
     }
   };
-
+   const router = useRouter();
   const handleOptionClick = (option: string) => {
     // Handle option selection
     console.log("Selected option:", option);
@@ -39,11 +42,12 @@ export default function AiAssistantPage({ onBack }: AiAssistantPageProps) {
       <div className="h-[20px]"></div>
       
       <div className="px-4 sm:px-6">
-        <ProfileHeaderCard 
-          title="AI Assistant (Zuri)" 
+        <ProfileHeaderCard
           variant="default"
-          onBack={onBack}
-        />
+          onBack={() => router.push("/dashboard/profile")}
+        >
+          <AppHeading text="Profile & Settings" type={HeadingType.H4} />
+        </ProfileHeaderCard>
       </div>
       
       <div className="flex-1 px-4 sm:px-6 mt-6 pb-6">

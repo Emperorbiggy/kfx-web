@@ -6,7 +6,6 @@ import AppHeading from "@/components/texts/Headings";
 import { HeadingType } from "@/types/enum";
 import {
   FaCheckCircle,
-  FaStar,
   FaCog,
   FaBell,
   FaUser,

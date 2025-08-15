@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { FiGlobe, FiSettings } from "react-icons/fi";
 import { ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
+import AppHeading from "@/components/texts/Headings";
+import { HeadingType } from "@/types/enum";
 
 export default function PreferencePage() {
   const router = useRouter();
@@ -39,28 +41,30 @@ export default function PreferencePage() {
     </button>
   );
 
-  const TextSizeButton = ({ 
-    size, 
-    label, 
-    isSelected, 
-    onClick 
-  }: { 
-    size: string; 
-    label: string; 
-    isSelected: boolean; 
-    onClick: () => void;
-  }) => (
-    <button
-      onClick={onClick}
-      className={`w-10 h-10 rounded-lg font-medium transition-all ${
-        isSelected 
-          ? "bg-blue-600 text-white" 
-          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-      }`}
-    >
-      {label}
-    </button>
-  );
+  const TextSizeButton = ({
+  size,
+  label,
+  isSelected,
+  onClick,
+}: {
+  size: "small" | "medium" | "large";
+  label: string;
+  isSelected: boolean;
+  onClick: () => void;
+}) => (
+  <button
+    onClick={onClick}
+    className={`w-10 h-10 rounded-lg font-medium transition-all ${
+      isSelected
+        ? "bg-blue-600 text-white"
+        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+    }`}
+  >
+    {label}
+  </button>
+);
+
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -68,11 +72,12 @@ export default function PreferencePage() {
       
       {/* Header */}
       <div className="px-4 sm:px-6">
-        <ProfileHeaderCard 
-          title="Preferences" 
+        <ProfileHeaderCard
           variant="default"
           onBack={() => router.push("/dashboard/profile")}
-        />
+        >
+          <AppHeading text="Profile & Settings" type={HeadingType.H4} />
+        </ProfileHeaderCard>
       </div>
       
       {/* Main Content */}
@@ -212,7 +217,7 @@ export default function PreferencePage() {
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-8 px-4 sm:px-6 pb-8">
         <Button
-          variant="outline"
+          variant="white"
           className="flex-1 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 py-3 lg:py-4 rounded-full text-sm lg:text-base font-medium"
         >
           Cancel

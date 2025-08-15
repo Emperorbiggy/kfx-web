@@ -3,7 +3,9 @@
 import React from "react";
 import { ProfileHeaderCard } from "@/components/ui/ProfileHeaderCard";
 import { FiChevronRight } from "react-icons/fi";
-
+import { useRouter } from "next/navigation";
+import AppHeading from "@/components/texts/Headings";
+import { HeadingType } from "@/types/enum";
 interface SupportTopicsPageProps {
   onBack: () => void;
 }
@@ -23,6 +25,7 @@ export default function SupportTopicsPage({ onBack }: SupportTopicsPageProps) {
     "Verifying your KFC Remittance Account: Step-by-step guide",
     "Verifying your KFC Remittance Account: Step-by-step guide"
   ];
+    const router = useRouter();
 
   const handleTopicClick = (topic: string) => {
     // Handle topic selection
@@ -34,11 +37,12 @@ export default function SupportTopicsPage({ onBack }: SupportTopicsPageProps) {
       <div className="h-[20px]"></div>
       
       <div className="px-4 sm:px-6">
-        <ProfileHeaderCard 
-          title="Support Topics" 
+         <ProfileHeaderCard
           variant="default"
-          onBack={onBack}
-        />
+          onBack={() => router.push("/dashboard/profile")}
+        >
+          <AppHeading text="Profile & Settings" type={HeadingType.H4} />
+        </ProfileHeaderCard>
       </div>
       
       <div className="px-4 sm:px-6 mt-6 space-y-6">

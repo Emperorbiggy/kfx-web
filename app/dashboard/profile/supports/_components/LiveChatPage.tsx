@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 import { ProfileHeaderCard } from "@/components/ui/ProfileHeaderCard";
 import { FiSend, FiPaperclip, FiSmile } from "react-icons/fi";
+import { useRouter } from "next/navigation";
+import AppHeading from "@/components/texts/Headings";
+import { HeadingType } from "@/types/enum";
 
 interface LiveChatPageProps {
   onBack: () => void;
@@ -44,6 +47,7 @@ export default function LiveChatPage({ onBack }: LiveChatPageProps) {
   ]);
   
   const [newMessage, setNewMessage] = useState("");
+   const router = useRouter();
 
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
@@ -63,13 +67,12 @@ export default function LiveChatPage({ onBack }: LiveChatPageProps) {
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <div className="h-[20px]"></div>
       
-      <div className="px-4 sm:px-6">
-        <ProfileHeaderCard 
-          title="Customer Representative" 
+      <ProfileHeaderCard
           variant="default"
-          onBack={onBack}
-        />
-      </div>
+          onBack={() => router.push("/dashboard/profile")}
+        >
+          <AppHeading text="Profile & Settings" type={HeadingType.H4} />
+        </ProfileHeaderCard>
       
       <div className="flex-1 px-4 sm:px-6 mt-6 pb-6">
         <div className="bg-white rounded-lg shadow-sm h-full flex flex-col">

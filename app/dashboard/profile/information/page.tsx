@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { ProfileHeaderCard } from "@/components/ui/ProfileHeaderCard";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import AppHeading from "@/components/texts/Headings";
+import { HeadingType } from "@/types/enum";
 
 export default function ProfileInformationPage() {
   const router = useRouter();
@@ -14,11 +16,12 @@ export default function ProfileInformationPage() {
     <div className="min-h-screen bg-gray-50 px-6">
       {/* Header with back button */}
       <div className="h-[20px]"></div>
-      <ProfileHeaderCard 
-        title="Profile & Settings" 
-        variant="default"
-        onBack={() => router.push("/dashboard/profile")}
-      />
+      <ProfileHeaderCard
+          variant="default"
+          onBack={() => router.push("/dashboard/profile")}
+        >
+          <AppHeading text="Profile & Settings" type={HeadingType.H4} />
+        </ProfileHeaderCard>
       {/* Main Content */}
       <div className="w-full">
         
@@ -245,7 +248,7 @@ export default function ProfileInformationPage() {
             {/* Action Buttons */}
             <div className="flex gap-6 mt-10 pt-8 border-t border-gray-200">
               <Button
-                variant="outline"
+                variant="white"
                 className="flex-1 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 py-4 rounded-full text-base font-medium"
               >
                 Cancel

@@ -5,6 +5,8 @@ import { ProfileHeaderCard } from "@/components/ui/ProfileHeaderCard";
 import { Button } from "@/components/ui/button";
 import { FiBell, FiMail, FiMessageSquare } from "react-icons/fi";
 import { useRouter } from "next/navigation";
+import AppHeading from "@/components/texts/Headings";
+import { HeadingType } from "@/types/enum";
 
 export default function NotificationPage() {
   const router = useRouter();
@@ -63,11 +65,12 @@ export default function NotificationPage() {
       
       {/* Header */}
       <div className="px-6">
-        <ProfileHeaderCard 
-          title="Notifications" 
+        <ProfileHeaderCard
           variant="default"
           onBack={() => router.push("/dashboard/profile")}
-        />
+        >
+          <AppHeading text="Profile & Settings" type={HeadingType.H4} />
+        </ProfileHeaderCard>
       </div>
       
       {/* Main Content */}
@@ -173,7 +176,7 @@ export default function NotificationPage() {
       {/* Action Buttons */}
       <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-8 px-6 pb-8">
         <Button
-          variant="outline"
+          variant="white"
           className="flex-1 bg-white border border-gray-300 text-gray-700 hover:bg-gray-50 py-3 lg:py-4 rounded-full text-sm lg:text-base font-medium"
         >
           Cancel

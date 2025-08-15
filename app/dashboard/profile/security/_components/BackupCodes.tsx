@@ -2,18 +2,21 @@
 
 import React from "react";
 import { ProfileHeaderCard } from "@/components/ui/ProfileHeaderCard";
+import AppHeading from "@/components/texts/Headings";
+import { HeadingType } from "@/types/enum";
+import { useRouter } from "next/navigation";
 import { FiShield, FiCopy } from "react-icons/fi";
 
 interface BackupCodesProps {
-  onBack: () => void;
+  onBack?: () => void;
 }
 
-const ToggleSwitch = ({ 
-  checked, 
-  onChange, 
-  disabled = false 
-}: { 
-  checked: boolean; 
+const ToggleSwitch = ({
+  checked,
+  onChange,
+  disabled = false,
+}: {
+  checked: boolean;
   onChange: (checked: boolean) => void;
   disabled?: boolean;
 }) => (
@@ -33,12 +36,14 @@ const ToggleSwitch = ({
 );
 
 export default function BackupCodes({ onBack }: BackupCodesProps) {
+  const router = useRouter();
+
   const backupCodes = [
     "DVDHGHGBFGFBG",
-    "DVDHGHGBFGFBG", 
     "DVDHGHGBFGFBG",
     "DVDHGHGBFGFBG",
-    "DVDHGHGBFGFBG"
+    "DVDHGHGBFGFBG",
+    "DVDHGHGBFGFBG",
   ];
 
   const copyToClipboard = (text: string) => {
@@ -48,37 +53,39 @@ export default function BackupCodes({ onBack }: BackupCodesProps) {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="h-[20px]"></div>
-      
+
       <div className="px-4 sm:px-6">
-        <ProfileHeaderCard 
-          title="Security & Privacy" 
-          variant="default"
-          onBack={onBack}
-        />
+        <ProfileHeaderCard variant="default" onBack={onBack || (() => router.back())}>
+          <AppHeading text="Profile & Settings" type={HeadingType.H4} />
+        </ProfileHeaderCard>
       </div>
-      
+
       <div className="px-4 sm:px-6 mt-6">
         <div className="bg-white rounded-lg shadow-sm p-6 lg:p-8">
           <div className="flex items-center mb-6 lg:mb-8">
             <FiShield className="w-5 h-5 text-gray-600 mr-3" />
-            <h2 className="text-lg lg:text-xl font-semibold text-gray-900">Two-Factor Authentication</h2>
+            <h2 className="text-lg lg:text-xl font-semibold text-gray-900">
+              Two-Factor Authentication
+            </h2>
           </div>
-          
+
           <div className="flex items-center justify-between mb-6">
             <span className="text-sm lg:text-base text-gray-700 font-medium">
               Enable Two-Factor Authentication
             </span>
-            <ToggleSwitch 
-              checked={true}
-              onChange={() => {}}
-            />
+            <ToggleSwitch checked={true} onChange={() => {}} />
           </div>
 
           <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Backup Codes</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4">
+              Backup Codes
+            </h3>
             <div className="space-y-3">
               {backupCodes.map((code, index) => (
-                <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                >
                   <div className="flex items-center space-x-3">
                     <button onClick={() => copyToClipboard(code)}>
                       <FiCopy className="w-4 h-4 text-gray-400" />

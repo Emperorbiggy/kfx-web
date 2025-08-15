@@ -4,18 +4,21 @@ import React from "react";
 import { ProfileHeaderCard } from "@/components/ui/ProfileHeaderCard";
 import { Button } from "@/components/ui/button";
 import { FiShield, FiCopy } from "react-icons/fi";
+import { useRouter } from "next/navigation";
+import AppHeading from "@/components/texts/Headings";
+import { HeadingType } from "@/types/enum";
 
 interface TwoFactorSetupProps {
   onBack: () => void;
   onComplete: () => void;
 }
 
-const ToggleSwitch = ({ 
-  checked, 
-  onChange, 
-  disabled = false 
-}: { 
-  checked: boolean; 
+const ToggleSwitch = ({
+  checked,
+  onChange,
+  disabled = false,
+}: {
+  checked: boolean;
   onChange: (checked: boolean) => void;
   disabled?: boolean;
 }) => (
@@ -34,7 +37,12 @@ const ToggleSwitch = ({
   </button>
 );
 
-export default function TwoFactorSetup({ onBack, onComplete }: TwoFactorSetupProps) {
+export default function TwoFactorSetup({
+  onBack,
+  onComplete,
+}: TwoFactorSetupProps) {
+  const router = useRouter(); // ✅ moved inside the component
+
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
   };
@@ -42,35 +50,36 @@ export default function TwoFactorSetup({ onBack, onComplete }: TwoFactorSetupPro
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="h-[20px]"></div>
-      
+
       <div className="px-4 sm:px-6">
-        <ProfileHeaderCard 
-          title="Security & Privacy" 
+        <ProfileHeaderCard
           variant="default"
-          onBack={onBack}
-        />
+          onBack={onBack || (() => router.back())}
+        >
+          <AppHeading text="Profile & Settings" type={HeadingType.H4} />
+        </ProfileHeaderCard>
       </div>
-      
+
       <div className="px-4 sm:px-6 mt-6">
         <div className="bg-white rounded-lg shadow-sm p-6 lg:p-8">
           <div className="flex items-center mb-6 lg:mb-8">
             <FiShield className="w-5 h-5 text-gray-600 mr-3" />
-            <h2 className="text-lg lg:text-xl font-semibold text-gray-900">Two-Factor Authentication</h2>
+            <h2 className="text-lg lg:text-xl font-semibold text-gray-900">
+              Two-Factor Authentication
+            </h2>
           </div>
-          
+
           <div className="flex items-center justify-between mb-6">
             <span className="text-sm lg:text-base text-gray-700 font-medium">
               Enable Two-Factor Authentication
             </span>
-            <ToggleSwitch 
-              checked={true}
-              onChange={() => {}}
-              disabled={true}
-            />
+            <ToggleSwitch checked={true} onChange={() => {}} disabled={true} />
           </div>
 
           <div className="mb-6">
-            <span className="text-sm text-gray-600 font-medium">🔒 Authenticator App Setup</span>
+            <span className="text-sm text-gray-600 font-medium">
+              🔒 Authenticator App Setup
+            </span>
           </div>
 
           {/* QR Code Section */}
@@ -82,14 +91,17 @@ export default function TwoFactorSetup({ onBack, onComplete }: TwoFactorSetupPro
                 ))}
               </div>
             </div>
-            
+
             <p className="text-center text-gray-600 mb-4 max-w-sm">
-              Scan this QR code with Google Authenticator, Authy, or any compatible 2FA app
+              Scan this QR code with Google Authenticator, Authy, or any
+              compatible 2FA app
             </p>
-            
+
             <div className="flex items-center space-x-2 text-blue-600">
               <span className="text-sm font-medium">KFXR EMIT TANC E2FA</span>
-              <button onClick={() => copyToClipboard("KFXR EMIT TANC E2FA")}>
+              <button
+                onClick={() => copyToClipboard("KFXR EMIT TANC E2FA")}
+              >
                 <FiCopy className="w-4 h-4" />
               </button>
             </div>
@@ -98,17 +110,10 @@ export default function TwoFactorSetup({ onBack, onComplete }: TwoFactorSetupPro
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-8 px-4 sm:px-6 pb-8">
-        <Button
-          variant="outline"
-          className="flex-1"
-          onClick={onBack}
-        >
+        <Button variant="white" className="flex-1" onClick={onBack}>
           Cancel
         </Button>
-        <Button 
-          className="flex-1"
-          onClick={onComplete}
-        >
+        <Button className="flex-1" onClick={onComplete}>
           Save Changes
         </Button>
       </div>

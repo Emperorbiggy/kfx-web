@@ -9,97 +9,128 @@ import BackupCodes from "./_components/BackupCodes";
 import RenameDevice from "./_components/RenameDevice";
 import DeviceNotifications from "./_components/DeviceNotifications";
 
+// Match the NotificationSettings type from DeviceNotifications
+type NotificationSettings = {
+  transactional: boolean;
+  login: boolean;
+  promotional: boolean;
+};
+
+type DeviceNotificationsData = {
+  iPhone: NotificationSettings;
+  MacBook: NotificationSettings;
+};
+
+// Device type
+type Device = {
+  id: number;
+  name: string;
+  lastActive: string;
+  isCurrent: boolean;
+};
+
+// Login activity type
+type LoginActivity = {
+  id: number;
+  type: string;
+  location: string;
+  time: string;
+  status: string;
+};
+
 export default function SecurityPage() {
   // State management
-  const [currentView, setCurrentView] = useState<'main' | 'twoFactorSetup' | 'backupCodes' | 'renameDevice' | 'deviceNotifications'>('main');
+  const [currentView, setCurrentView] = useState<
+    "main" | "twoFactorSetup" | "backupCodes" | "renameDevice" | "deviceNotifications"
+  >("main");
   const [twoFactorEnabled, setTwoFactorEnabled] = useState(false);
-  const [selectedDevice, setSelectedDevice] = useState<any>(null);
-  
+  const [selectedDevice, setSelectedDevice] = useState<Device | null>(null);
+
   // Device data
-  const [devices] = useState([
+  const [devices] = useState<Device[]>([
     {
       id: 1,
       name: "iPhone 14 Pro",
       lastActive: "2 hours ago",
-      isCurrent: true
+      isCurrent: true,
     },
     {
       id: 2,
       name: "MacBook Pro",
       lastActive: "1 day ago",
-      isCurrent: false
-    }
+      isCurrent: false,
+    },
   ]);
 
   // Login activity data
-  const [loginActivity] = useState([
+  const [loginActivity] = useState<LoginActivity[]>([
     {
       id: 1,
       type: "Successful login",
       location: "Lagos, Nigeria",
       time: "2 hours ago",
-      status: "success"
+      status: "success",
     },
     {
       id: 2,
-      type: "Successful login", 
+      type: "Successful login",
       location: "Lagos, Nigeria",
       time: "1 day ago",
-      status: "success"
-    }
+      status: "success",
+    },
   ]);
 
-  // Device notifications state
-  const [deviceNotifications, setDeviceNotifications] = useState({
+  // Device notifications state (typed correctly)
+  const [deviceNotifications, setDeviceNotifications] = useState<DeviceNotificationsData>({
     iPhone: {
       transactional: true,
       login: false,
-      promotional: false
+      promotional: false,
     },
     MacBook: {
       transactional: true,
       login: false,
-      promotional: false
-    }
+      promotional: false,
+    },
   });
 
   // Event handlers
   const handleTwoFactorSetup = () => {
-    setCurrentView('twoFactorSetup');
+    setCurrentView("twoFactorSetup");
   };
 
   const handleTwoFactorComplete = () => {
     setTwoFactorEnabled(true);
-    setCurrentView('main');
+    setCurrentView("main");
   };
 
   const handleViewBackupCodes = () => {
-    setCurrentView('backupCodes');
+    setCurrentView("backupCodes");
   };
 
-  const handleEditDevice = (device: any) => {
+  const handleEditDevice = (device: Device) => {
     setSelectedDevice(device);
-    setCurrentView('renameDevice');
+    setCurrentView("renameDevice");
   };
 
   const handleDeviceNotifications = () => {
-    setCurrentView('deviceNotifications');
+    setCurrentView("deviceNotifications");
   };
 
   const handleSaveDeviceName = (newName: string) => {
-    // Update device name logic here
-    setCurrentView('main');
+    // Future logic for renaming device will go here
+    setCurrentView("main");
     setSelectedDevice(null);
   };
 
   const handleBackToMain = () => {
-    setCurrentView('main');
+    setCurrentView("main");
     setSelectedDevice(null);
   };
 
   // Render based on current view
   switch (currentView) {
-    case 'twoFactorSetup':
+    case "twoFactorSetup":
       return (
         <TwoFactorSetup
           onBack={handleBackToMain}
@@ -107,14 +138,10 @@ export default function SecurityPage() {
         />
       );
 
-    case 'backupCodes':
-      return (
-        <BackupCodes
-          onBack={handleBackToMain}
-        />
-      );
+    case "backupCodes":
+      return <BackupCodes onBack={handleBackToMain} />;
 
-    case 'renameDevice':
+    case "renameDevice":
       return (
         <RenameDevice
           device={selectedDevice}
@@ -123,7 +150,7 @@ export default function SecurityPage() {
         />
       );
 
-    case 'deviceNotifications':
+    case "deviceNotifications":
       return (
         <DeviceNotifications
           deviceNotifications={deviceNotifications}
